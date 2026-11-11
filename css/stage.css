@@ -1,0 +1,90 @@
+/* ==========================================================
+   STAGE — scattered elements (A), collapse (B), flash (C)
+   ========================================================== */
+
+.stage {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.stage__item {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin: 0;
+  white-space: nowrap;
+  color: var(--neon);
+  font-family: var(--font);
+  font-weight: 700;
+  will-change: transform, opacity;
+}
+
+.stage__item--glyph {
+  font-size: clamp(1.6rem, 6vw, 4.2rem);
+  line-height: 1;
+  text-shadow: var(--glow-strong);
+}
+
+.stage__item--code {
+  font-size: clamp(0.7rem, 1.6vw, 1rem);
+  font-weight: 400;
+  text-shadow: var(--glow-soft);
+}
+
+.stage__item--stream {
+  width: 2px;
+  background: linear-gradient(to bottom, transparent, var(--neon), transparent);
+  box-shadow: 0 0 8px var(--neon);
+}
+
+.stage__item--ring {
+  border: 2px solid var(--neon);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--neon), inset 0 0 10px rgba(0, 255, 65, 0.4);
+}
+
+.stage__item--logo { --logo-size: clamp(90px, 16vh, 170px); }
+
+/* Whole-stage digital glitch while elements are scattered */
+.stage.is-glitching { animation: stage-glitch 0.35s steps(1, end) infinite; }
+
+@keyframes stage-glitch {
+  0%   { transform: translate(0); filter: none; }
+  20%  { transform: translate(-5px, 1px); filter: hue-rotate(-20deg) saturate(1.5); }
+  40%  { transform: translate(6px, -2px); filter: none; }
+  60%  { transform: translate(-2px, 3px); filter: hue-rotate(15deg); }
+  80%  { transform: translate(3px, 0); filter: none; }
+  100% { transform: translate(0); }
+}
+
+/* Singularity at exact centre once everything has converged */
+.core {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  z-index: 35;
+  width: 24px;
+  height: 24px;
+  margin: -12px 0 0 -12px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 0 24px 8px #ffffff, 0 0 60px 20px rgba(0, 255, 65, 0.9);
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0);
+}
+
+/* Full-screen white flash */
+.flash {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: #ffffff;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.flash__burst { display: none; }

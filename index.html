@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MAJLIS ANUGERAH MUTIARA GEMILANG 2026</title>
+  <link rel="icon" href="gfx/logo.jpeg">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/lock.css">
+  <link rel="stylesheet" href="css/wrong.css">
+  <link rel="stylesheet" href="css/stage.css">
+  <link rel="stylesheet" href="css/poster.css">
+</head>
+<body>
+
+  <!-- Ambient mainframe background -->
+  <canvas id="rain" aria-hidden="true"></canvas>
+  <div class="grid-overlay" aria-hidden="true"></div>
+  <div class="scanlines" aria-hidden="true"></div>
+
+  <!-- ============ PASSWORD LOCK SCREEN ============ -->
+  <section id="lock" class="lock">
+    <div class="lock__inner" id="lock-inner">
+
+      <div class="logo-neon" id="logo-neon">
+        <img class="logo-neon__glow" src="gfx/logo.jpeg" alt="" aria-hidden="true">
+        <div class="logo-neon__mask">
+          <img class="logo-neon__img" src="gfx/logo.jpeg" alt="SMK Bukit Jelutong Shah Alam crest">
+        </div>
+      </div>
+
+      <h1 class="lock__title">
+        MAJLIS ANUGERAH<br>
+        MUTIARA GEMILANG <span class="lock__year">2026</span>
+      </h1>
+
+      <form id="lock-form" class="lock__form" autocomplete="off">
+        <label class="lock__label" for="password">ENTER PASSCODE</label>
+        <p class="lock__hint">// ACCESS RESTRICTED — AUTHORIZATION REQUIRED</p>
+        <input
+          class="lock__input"
+          id="password"
+          name="password"
+          type="password"
+          autocomplete="off"
+          spellcheck="false"
+          autofocus>
+        <button class="lock__button" id="lock-button" type="submit">ACCESS&nbsp;&nbsp;&#9656;</button>
+      </form>
+
+      <p class="lock__status" id="lock-status">SYS://MAINFRAME &middot; NODE-77 &middot; AWAITING CREDENTIALS_</p>
+    </div>
+  </section>
+
+  <!-- ============ WRONG PASSWORD OVERLAY ============ -->
+  <div id="wrong" class="wrong" role="alert" aria-live="assertive" aria-hidden="true">
+    <span class="wrong__text" data-text="WRONG">WRONG</span>
+  </div>
+
+  <!-- ============ ANIMATION STAGE (A + B) ============ -->
+  <section id="stage" class="stage" aria-hidden="true"></section>
+  <div id="core" class="core" aria-hidden="true"></div>
+
+  <!-- ============ WHITE FLASH (C) ============ -->
+  <div id="flash" class="flash" aria-hidden="true">
+    <div class="flash__burst"></div>
+  </div>
+
+  <!-- ============ FINAL POSTER (D) — untouched ============ -->
+  <section id="poster" class="poster">
+    <img class="poster__img" src="gfx/poster.png" alt="Majlis Anugerah Mutiara Gemilang 2026 — official event poster">
+  </section>
+
+  <script src="js/rain.js"></script>
+  <script src="js/stage.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+/* ==========================================================
+   POSTER — final reveal. NO filters, overlays or effects.
+   The image is shown as supplied, scaled proportionally to fit.
+   ========================================================== */
+
+.poster {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: none;
+  background: #000000;
+}
+
+.poster.is-visible { display: flex; }
+
+.poster__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Once the poster is shown, remove every ambient layer that could sit on it */
+body.is-poster #rain,
+body.is-poster .grid-overlay,
+body.is-poster .scanlines,
+body.is-poster .stage,
+body.is-poster .core,
+body.is-poster .wrong { display: none !important; }

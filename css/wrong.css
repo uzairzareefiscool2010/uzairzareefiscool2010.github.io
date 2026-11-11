@@ -1,0 +1,71 @@
+/* ==========================================================
+   WRONG — incorrect password (bright red, huge, glitchy)
+   ========================================================== */
+
+.wrong {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.wrong.is-visible { display: flex; }
+
+.wrong__text {
+  position: relative;
+  font-family: "Impact", "Arial Black", var(--font);
+  font-weight: 900;
+  font-size: clamp(4rem, 24vw, 22rem);
+  line-height: 1;
+  letter-spacing: 0.04em;
+  color: var(--red);
+  text-shadow: 0 0 10px #ff0000, 0 0 30px rgba(255, 0, 0, 0.85), 0 0 70px rgba(255, 0, 0, 0.6);
+}
+
+.wrong__text::before,
+.wrong__text::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  color: var(--red);
+}
+
+.wrong__text::before { clip-path: inset(0 0 55% 0); }
+.wrong__text::after  { clip-path: inset(50% 0 0 0); }
+
+.wrong.is-glitching .wrong__text           { animation: wrong-flicker 0.7s steps(1, end); }
+.wrong.is-glitching .wrong__text::before   { animation: wrong-slice-a 0.7s steps(1, end); }
+.wrong.is-glitching .wrong__text::after    { animation: wrong-slice-b 0.7s steps(1, end); }
+
+@keyframes wrong-flicker {
+  0%   { opacity: 0; transform: scale(1.12) skewX(8deg); }
+  10%  { opacity: 1; transform: scale(1) skewX(0); }
+  20%  { opacity: 0.2; transform: translateX(-12px); }
+  30%  { opacity: 1; transform: translateX(10px) skewX(-6deg); }
+  45%  { opacity: 0.4; transform: translateX(0); }
+  55%  { opacity: 1; }
+  70%  { opacity: 0.6; transform: translateX(-6px); }
+  80%  { opacity: 1; transform: translateX(0); }
+  100% { opacity: 1; transform: none; }
+}
+
+@keyframes wrong-slice-a {
+  0%, 100% { opacity: 0; transform: none; }
+  15% { opacity: 1; transform: translate(-22px, -4px); }
+  35% { opacity: 1; transform: translate(18px, 3px); }
+  60% { opacity: 1; transform: translate(-14px, 0); }
+  80% { opacity: 0; }
+}
+
+@keyframes wrong-slice-b {
+  0%, 100% { opacity: 0; transform: none; }
+  20% { opacity: 1; transform: translate(24px, 5px); }
+  45% { opacity: 1; transform: translate(-20px, -3px); }
+  70% { opacity: 1; transform: translate(12px, 2px); }
+  85% { opacity: 0; }
+}
